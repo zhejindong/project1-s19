@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata"> 
+              <p><a class="article-title">Order ID: {{post[0]}}      Time: {{post[1]}}     Tracking ID: {{post[2]}}</a></p>
+            </div>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

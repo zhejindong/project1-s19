@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <h2><a class="article-title" href="#">{{post[1]}}</a></h2>
+              <a class="mr-2" >seller_id: {{post[4]}}</a>
+              <a class="mr-2" >Now: {{ post[3]}}$</a>
+              <a class="mr-2" >Last: {{ post[2]}}$</a>
+              <a class="btn btn-success" href="{{url_for('Cart',post_id=post[5],item_id=post[0])}}">Cart</a>
+              <a class="btn btn-warning" href="{{url_for('Purchase',post_id=post[5],item_id=post[0])}}">Purchase Now</a>
+            </div>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
