@@ -1,8 +1,6 @@
 from flask import render_template, url_for, flash, redirect, request
-from flaskblog import app, db, bcrypt
-from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm
-from flaskblog.models import User, Post
-from flask_login import login_user, current_user, logout_user, login_required
+from flaskblog import app
+from flaskblog.forms import RegistrationForm, LoginForm
 from flask import  g, Response
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
@@ -329,7 +327,7 @@ def office():
        pos=()
        pos=(i.discription,i.picture,i.item_no)
        office.add(pos)
-    return render_template('home.html',posts=office,current_user_email=current_user_email)
+    return render_template('home.html',posts=office,current_user_email=current_user_email) 
 
 @app.route("/pet")
 def pet():
