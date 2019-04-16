@@ -164,6 +164,24 @@ def account():
         redirect(url_for('login'))
         return redirect(url_for('home'))
 
+@app.route("/search",methods=['GET', 'POST'])
+def search():
+    items_list=set()
+    text = request.form['search']
+    expression = '%'+text+'%'
+    cmd="SELECT * FROM item where discription like :expression1;"
+    cursor = g.conn.execute(text(cmd),expression1=expression)
+    item_list= cursor.fetchall()# can also be accessed using result[0]
+    cursor.close()
+    for i in item_list:
+       pos=()
+       pos=(i.discription,i.picture,i.item_no)
+       items_list.add(pos)
+    if items_list:
+        return render_template('search.html',posts=items_list,current_user_email=current_user_email)
+    else:
+        flash("No results found.Try checking your spelling or use more general terms.")
+        return redirect(url_for('home'))
 
 @app.route("/post/<int:post_id>")
 def post(post_id):
