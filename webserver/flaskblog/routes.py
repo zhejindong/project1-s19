@@ -194,9 +194,7 @@ def Cart(post_id,item_id):
 
 @app.route("/post/<int:post_id>/<int:item_id>/purchase", methods=['GET', 'POST'])
 def Purchase(post_id,item_id):
-    #global current_user_email
     if current_user_email:
-        #flash(order_id[0])
         flash('Your order is placed :)', 'success')
         cmd='insert into costomer_order values(:email1);'
         cursor = g.conn.execute(text(cmd),email1=current_user_email[-1])
@@ -221,39 +219,145 @@ def delete(item_id):
 
 @app.route("/cloth")
 def cloth():
-    return render_template('about.html', title='About')
+    cloths=set()
+    a='Cloth'
+    cmd='select * from item where item_no in (select item_no from item_category where name=:name1);'
+    cursor = g.conn.execute(text(cmd),name1=a)
+    item= cursor.fetchall()# can also be accessed using result[0]
+    cursor.close()
+    for i in item:
+       pos=()
+       pos=(i.discription,i.picture,i.item_no)
+       cloths.add(pos)
+    return render_template('home.html',posts=cloths,current_user_email=current_user_email)
 
 
 @app.route("/book")
 def book():
-    return render_template('about.html', title='About')
+    book=set()
+    a='Books & Audible'
+    cmd='select * from item where item_no in (select item_no from item_category where name=:name1);'
+    cursor = g.conn.execute(text(cmd),name1=a)
+    item= cursor.fetchall()# can also be accessed using result[0]
+    cursor.close()
+    for i in item:
+       pos=()
+       pos=(i.discription,i.picture,i.item_no)
+       book.add(pos)
+    return render_template('home.html',posts=book,current_user_email=current_user_email)
+
 
 @app.route("/sports")
 def sports():
-    return render_template('about.html', title='About')
+    sports=set()
+    a='Sports'
+    cmd='select * from item where item_no in (select item_no from item_category where name=:name1);'
+    cursor = g.conn.execute(text(cmd),name1=a)
+    item= cursor.fetchall()# can also be accessed using result[0]
+    cursor.close()
+    for i in item:
+       pos=()
+       pos=(i.discription,i.picture,i.item_no)
+       sports.add(pos)
+    return render_template('home.html',posts=sports,current_user_email=current_user_email)
+
+@app.route("/food")
+def food():
+    food=set()
+    a='Food'
+    cmd='select * from item where item_no in (select item_no from item_category where name=:name1);'
+    cursor = g.conn.execute(text(cmd),name1=a)
+    item= cursor.fetchall()# can also be accessed using result[0]
+    cursor.close()
+    for i in item:
+       pos=()
+       pos=(i.discription,i.picture,i.item_no)
+       food.add(pos)
+    return render_template('home.html',posts=food,current_user_email=current_user_email)
 
 @app.route("/home1")
 def home1():
-    return render_template('about.html', title='About')
+    home1=set()
+    a='Home'
+    cmd='select * from item where item_no in (select item_no from item_category where name=:name1);'
+    cursor = g.conn.execute(text(cmd),name1=a)
+    item= cursor.fetchall()# can also be accessed using result[0]
+    cursor.close()
+    for i in item:
+       pos=()
+       pos=(i.discription,i.picture,i.item_no)
+       home1.add(pos)
+    return render_template('home.html',posts=home1,current_user_email=current_user_email)
 
 @app.route("/beauty")
 def beauty():
-    return render_template('about.html', title='About')
+    beauty=set()
+    a='Beauty'
+    cmd='select * from item where item_no in (select item_no from item_category where name=:name1);'
+    cursor = g.conn.execute(text(cmd),name1=a)
+    item= cursor.fetchall()# can also be accessed using result[0]
+    cursor.close()
+    for i in item:
+       pos=()
+       pos=(i.discription,i.picture,i.item_no)
+       beauty.add(pos)
+    return render_template('home.html',posts=beauty,current_user_email=current_user_email)
 
 @app.route("/movie")
 def movie():
-    return render_template('about.html', title='About')
+    movie=set()
+    a='Movie'
+    cmd='select * from item where item_no in (select item_no from item_category where name=:name1);'
+    cursor = g.conn.execute(text(cmd),name1=a)
+    item= cursor.fetchall()# can also be accessed using result[0]
+    cursor.close()
+    for i in item:
+       pos=()
+       pos=(i.discription,i.picture,i.item_no)
+       movie.add(pos)
+    return render_template('home.html',posts=movie,current_user_email=current_user_email)
 
 @app.route("/office")
 def office():
-    return render_template('about.html', title='About')
+    office=set()
+    a='Office & Electronics'
+    cmd='select * from item where item_no in (select item_no from item_category where name=:name1);'
+    cursor = g.conn.execute(text(cmd),name1=a)
+    item= cursor.fetchall()# can also be accessed using result[0]
+    cursor.close()
+    for i in item:
+       pos=()
+       pos=(i.discription,i.picture,i.item_no)
+       office.add(pos)
+    return render_template('home.html',posts=office,current_user_email=current_user_email)
 
 @app.route("/pet")
 def pet():
-    return render_template('about.html', title='About')
+    pet=set()
+    a='Pet Supplies'
+    cmd='select * from item where item_no in (select item_no from item_category where name=:name1);'
+    cursor = g.conn.execute(text(cmd),name1=a)
+    item= cursor.fetchall()# can also be accessed using result[0]
+    cursor.close()
+    for i in item:
+       pos=()
+       pos=(i.discription,i.picture,i.item_no)
+       pet.add(pos)
+    return render_template('home.html',posts=pet,current_user_email=current_user_email)
 
 @app.route("/toys")
 def toys():
-    return render_template('about.html', title='About')
+    toys=set()
+    a='Toys'
+    cmd='select * from item where item_no in (select item_no from item_category where name=:name1);'
+    cursor = g.conn.execute(text(cmd),name1=a)
+    item= cursor.fetchall()# can also be accessed using result[0]
+    cursor.close()
+    for i in item:
+       pos=()
+       pos=(i.discription,i.picture,i.item_no)
+       toys.add(pos)
+    return render_template('home.html',posts=toys,current_user_email=current_user_email)
+
 
 
