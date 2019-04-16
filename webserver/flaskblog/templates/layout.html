@@ -28,6 +28,16 @@
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
               <a class="nav-item nav-link" href="{{ url_for('about') }}">About</a>
+              <form action="{{ url_for('search') }}" method="POST" class="navbar-form" role="search">
+                <div class="input-group add-on">
+                  <input class="form-control" placeholder="Search" name="search-term" id="search-term" type="text">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-info">
+                      <span class="glyphicon glyphicon-search">Search</span>
+                    </button>
+                  </div>
+                </div>
+              </form>
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
