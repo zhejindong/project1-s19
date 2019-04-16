@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <h4><a class="article-title" href="{{ url_for('post', post_id=post[2])}}">{{post[1]}}</a></h2>
+            </div>
+            <img src={{ post[0]}} height=200px width=190px>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
